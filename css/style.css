@@ -2,6 +2,14 @@
     margin: 0;
     padding: 0;
 }
+:root{
+    --main-color: #1880c8;
+    --active-color: #f65742;
+    --hover-color: #ffdb0e;
+}
+body{
+    background-color: #3c3c3c;
+}
 
 main {
     width: 1020px;
@@ -37,19 +45,22 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #ddd;
+    color: #1880c8;
     border-radius: 10px;
     background: linear-gradient(145deg, #404040, #363636);
-    box-shadow: 5px 5px 10px #303030,
-        -5px -5px 10px #484848;
+    box-shadow: 0 0 5px #1880c8;
+    animation: changeColor 5s linear infinite;
+}
+.keyboard__key:hover {
+    color: var(--hover-color);
+    box-shadow: 0 0 5px var(--hover-color);
 }
 
 [data-fn="false"].active,
 [data-fn="true"].active {
     border-radius: 15px;
     background: linear-gradient(145deg, #363636, #404040);
-    box-shadow: 5px 5px 10px #303030,
-        -5px -5px 10px #484848;
+    box-shadow: 0 0 10px #f65742;
 }
 
 [data-fn="false"].active .letter,
@@ -60,6 +71,7 @@ main {
     -ms-transform: translateY(1px);
     -o-transform: translateY(1px);
     color: #f65742;
+    
 }
 
 [data-fn="true"]>.letter {
@@ -127,13 +139,17 @@ main {
     -o-transform: translateX(0);
     transform-origin: center;
 }
-
+.title{
+    color: var(--active-color);
+}
 .subtitle,
 .hint {
-    color: #666;
+    color: #ccc;
 }
 
 textarea.output {
+    background-color: #3c3c3c;
+    color: var(--active-color);
     resize: none;
     width: 100%;
     height: 200px;
@@ -164,7 +180,7 @@ textarea.output {
 }
 
 .sub.sub-active:not(:empty) {
-    color: #eee;
+    color: #1880c8;
     text-align: center;
     padding: 0;
     font-size: 23px;
@@ -189,4 +205,12 @@ textarea.output {
     -moz-transform: translateX(20px);
     -ms-transform: translateX(20px);
     -o-transform: translateX(20px);
+}
+@keyframes changeColor {
+    from{
+        filter: hue-rotate(0deg);
+    }
+    to{
+        filter: hue-rotate(360deg);
+    }
 }
